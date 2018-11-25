@@ -1501,6 +1501,14 @@ void pointerMove( float inX, float inY ) {
     }
 
 
+// controller support:
+void joyButtonDown(int button) {}
+void joyButtonUp(int button) {}
+void joyDPadDown(int dir) {}
+void joyDPadUp(void) {}
+void joyRudder(int rudder, short pressure) {}
+void joyThumbstick(int stick, short x, short y) {}
+
 
 void pointerDown( float inX, float inY ) {
     if( isPaused() ) {

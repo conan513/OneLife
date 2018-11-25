@@ -1,9 +1,6 @@
 #ifndef LIVING_LIFE_PAGE_INCLUDED
 #define LIVING_LIFE_PAGE_INCLUDED
 
-
-
-
 #include "minorGems/ui/event/ActionListener.h"
 #include "minorGems/util/SimpleVector.h"
 
@@ -417,6 +414,14 @@ class LivingLifePage : public GamePage {
   
         virtual void makeActive( char inFresh );
         
+        // controller support:
+        virtual void joyButtonDown(int button);
+        virtual void joyButtonUp(int button);
+        virtual void joyDPadDown(int dir);
+        virtual void joyDPadUp(void);
+        virtual void joyRudder(int rudder, short pressure);
+        virtual void joyThumbstick(int stick, short x, short y);
+        void joyStep(void);
 
         virtual void pointerMove( float inX, float inY );
         virtual void pointerDown( float inX, float inY );

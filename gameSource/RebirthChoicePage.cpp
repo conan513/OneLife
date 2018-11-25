@@ -102,6 +102,11 @@ void RebirthChoicePage::draw( doublePair inViewCenter,
     }
 
 
+// controller support:
+void RebirthChoicePage::joyButtonUp(int button) {
+    setSignal("reborn");
+}
+
 
 void RebirthChoicePage::makeActive( char inFresh ) {
     

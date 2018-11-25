@@ -44,7 +44,6 @@
 
 #include <stdlib.h>//#include <math.h>
 
-
 #define MAP_D 64
 #define MAP_NUM_CELLS 4096
 
@@ -97,7 +96,6 @@ static char mouseDown = false;
 static int mouseDownFrames = 0;
 
 static int minMouseDownFrames = 30;
-
 
 static int screenCenterPlayerOffsetX, screenCenterPlayerOffsetY;
 
@@ -8792,7 +8790,9 @@ void LivingLifePage::step() {
     if( mouseDown ) {
         mouseDownFrames++;
         }
-    
+
+    joyStep(); // controller support.
+
     if( mServerSocket == -1 ) {
         serverSocketConnected = false;
         connectionMessageFade = 1.0f;
@@ -16179,12 +16179,6 @@ void LivingLifePage::makeActive( char inFresh ) {
         }
     }
 
-
-
-
-
-
-
 void LivingLifePage::checkForPointerHit( PointerHitRecord *inRecord,
                                          float inX, float inY ) {
     
@@ -16949,9 +16943,12 @@ char LivingLifePage::getCellBlocksWalking( int inMapX, int inMapY ) {
     }
 
 
-
+#include "joyMod.cpp" // controller support.
 
 void LivingLifePage::pointerDown( float inX, float inY ) {
+
+    fprintf(stderr, "----------Down> %f, %f\n", inX, inY); // debugging controller support.
+
     lastMouseX = inX;
     lastMouseY = inY;
 
@@ -17176,7 +17173,6 @@ void LivingLifePage::pointerDown( float inX, float inY ) {
         
         destNumContained = mMapContainedStacks[ mapY * mMapD + mapX ].size();
         
-
         // if holding something, and this is a set-down action
         // show click reaction
         if( modClick &&
@@ -18281,6 +18277,9 @@ void LivingLifePage::pointerDrag( float inX, float inY ) {
 
 
 void LivingLifePage::pointerUp( float inX, float inY ) {
+
+    fprintf(stderr, "------------Up> %f, %f\n", inX, inY); // debugging controller support.
+
     lastMouseX = inX;
     lastMouseY = inY;
 
