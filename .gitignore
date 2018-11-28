@@ -32,7 +32,11 @@ server/transitions
 gameSource/icon.ico
 gameSource/icon.rc
 gameSource/OneLife.exe
+gameSource/regenerateCaches.exe
 
 server/icon.ico
 server/icon.rc
 server/OneLifeServer.exe
+
+build/windows
+build/unix2dos.exe
